@@ -10,6 +10,7 @@ export const metadata = {
 const layout = ({ children }) => {
     return (
         <html lang="en">
+            <Provider>
             <body>
                 <div className="main">
                     <div className="gradient" />
@@ -19,6 +20,7 @@ const layout = ({ children }) => {
                     {children}
                 </main>
             </body>
+            </Provider>
         </html>
     )
 }
