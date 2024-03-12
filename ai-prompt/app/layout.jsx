@@ -1,12 +1,11 @@
-import "@/styles/globals.css";
-import { Children } from "react";
+import "@styles/globals.css";
 
 export const metadata = {
     title: "promptai",
     description: "discover and share ai prompt"
 }
 
-const RootLayout = () => {
+const RootLayout = ({children}) => {
   return (
     <html lang="en">
       <body>
