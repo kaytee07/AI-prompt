@@ -1,28 +1,24 @@
-import '@styles/globals.css'
-import Nav from '@components/Nav';
-import Provider from '@components/Provider';
+import "@/styles/globals.css";
+import { Children } from "react";
 
 export const metadata = {
-    title: "ai-prompt",
-    description: "Discover and share AI Prompts"
+    title: "promptai",
+    description: "discover and share ai prompt"
 }
 
-const layout = ({ children }) => {
-    return (
-        <html lang="en">
-            <Provider>
-            <body>
-                <div className="main">
-                    <div className="gradient" />
-                </div>
-                <main className="app">
-                    <Nav/>
-                    {children}
-                </main>
-            </body>
-            </Provider>
-        </html>
-    )
+const RootLayout = () => {
+  return (
+    <html lang="en">
+      <body>
+        <div className="main">
+            <div className="gradient"></div>
+        </div>
+        <main className="app">
+            {children}
+        </main>
+      </body>
+    </html>
+  )
 }
 
-export default layout;
+export default RootLayout
