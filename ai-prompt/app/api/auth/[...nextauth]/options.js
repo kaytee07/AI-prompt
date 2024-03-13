@@ -1,4 +1,6 @@
 import GoogleProvider from "next-auth/providers/google";
+import { connectToDB } from "@utils/database";
+import User from "@models/user";
 
 export const options = {
     providers: [
@@ -7,15 +9,29 @@ export const options = {
             clientSecret: process.env.GOOGLE_SECRET
         })
     ],
-    callbacks: {
-        async jwt({ token, user }) {
-            if(user) token.role = user.role;
-            return token;
-        },
-        async session({ session, token }) {
-            if(session?.user) session.user.role = token.role;
-            return session;
+    async session({session}) {
+
+    },
+
+    async signIn({ profile }){
+        try {
+            await connectToDB();
+            const userExists = await User.findOne({
+                email: profile.email
+            })
+
+            if(!userExists){
+                await User.create({
+                    email: profile.email,
+                    username: profile.name.replace(" ", "").toLowerCase(),
+                    image:profile.picture
+                })
+            }
+
+            return true
+        } catch (error) {
+            console.log(error);
+            return false;
         }
     }
-    
 }
