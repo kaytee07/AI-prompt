@@ -19,6 +19,7 @@ const PromptCardList = ({ data, handleTagClick}) => {
   )
 }
 
+
 const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [allPost, setAllPost] = useState([]);
@@ -37,6 +38,11 @@ const Feed = () => {
       return regex.test(prompt.creator.username) || 
       regex.test(prompt.tag) || regex.test(prompt.prompt)
     })
+  }
+
+  const handleTag = (tag) => {
+    setSearchText(tag)
+    setPost(filterPrompts(tag));
   }
 
   useEffect(() => {
@@ -65,7 +71,7 @@ const Feed = () => {
 
       <PromptCardList
         data={post}
-        handleTagClick={()=> {}}
+        handleTagClick={handleTag}
       />
     
     </section>
