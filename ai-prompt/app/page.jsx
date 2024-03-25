@@ -8,7 +8,7 @@ const Home = () => {
             <span className="orange_gradient">AI-Powered Prompts</span>
         </h1>
         <p className="desc text-center">
-            promptsAI is an open-source AI prompting tool
+            promptAI is an open-source AI prompting tool
             for modern world to discover, create and share creative
             AI prompts
         </p>
