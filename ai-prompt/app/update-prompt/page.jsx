@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Form from "@components/Form";
 
-const updatePrompt = () => {
+const UpdatePrompt = () => {
     const { data: session } = useSession();
     const router = useRouter();
     const searchParams = useSearchParams();
@@ -63,4 +63,4 @@ const updatePrompt = () => {
         />
   )
 }
-export default updatePrompt;
+export default UpdatePrompt;
