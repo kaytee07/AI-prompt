@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Profile from "@components/Profile";
@@ -27,7 +27,7 @@ const Profile = () => {
 
   return (
      <>
-    {console.log(posts)}
+    <Suspense  fallback={<>Loading...</>} >
     {posts.length && <Profile
       name={posts[0].creator.username}
       desc="Welcome to your personalized profile"
@@ -35,6 +35,7 @@ const Profile = () => {
       handleEdit={()=> {}}
       handleDelete={()=> {}}
     />}
+    </Suspense>
    </>
   )
 }

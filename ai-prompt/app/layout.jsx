@@ -18,9 +18,7 @@ const RootLayout = ({children}) => {
         </div>
         <main className="app">
             <Nav/>
-            <Suspense>
             {children}
-            </Suspense>
         </main>
         </Provider>
       </body>
