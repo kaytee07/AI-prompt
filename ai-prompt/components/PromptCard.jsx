@@ -16,10 +16,17 @@ const PromptCard = ({ post, handleTagClick,
       navigator.clipboard.writeText(post.prompt);
       setTimeout(()=> setCopied, 3000);
     }
+
   return (
     <div className="prompt_card mb-3">
       <div className="flex justify-between items-start gap-5">
-          <div className="flex-1 flex justify-start items-center
+          <div 
+            onClick={() => {
+              return session?.user.id === post.creator._id ?
+              router.push("/myprofile") : router.push(`/profile?id=${post.creator._id}`)
+            } 
+          }
+            className="flex-1 flex justify-start items-center
            gap-3">
             <Image
               src={post.creator.image}
@@ -38,6 +45,7 @@ const PromptCard = ({ post, handleTagClick,
 
           <div className="copy_btn cursor-pointer" onClick={handleCopy}>
             <Image
+              alt="copy_icon"
               src={copied === post.prompt
               ? '/assets/icons/tick.svg'
               : '/assets/icons/copy.svg'}
@@ -56,7 +64,7 @@ const PromptCard = ({ post, handleTagClick,
       </p>
 
       {session?.user.id === post.creator._id && 
-      pathName === '/profile' && (
+      pathName === '/myprofile' && (
         <div className="mt-5 flex-end gap-4 border-t border-gray-100 pt-3">
           <p
             className="font-inter text-sm green_gradient cursor-pointer"
