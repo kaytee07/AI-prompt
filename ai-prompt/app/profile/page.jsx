@@ -2,12 +2,10 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter, useSearchParams } from "next/navigation";
-
 import Profile from "@components/Profile";
 
 
 const Profile = () => {
-  const router = useRouter();
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
   const searchParams = useSearchParams();
