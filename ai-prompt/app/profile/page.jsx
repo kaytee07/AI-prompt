@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import Profile from "@components/Profile";
 
 
-const Profile = () => {
+const profile = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
   const searchParams = useSearchParams();
@@ -40,4 +40,4 @@ const Profile = () => {
   )
 }
 
-export default Profile;
+export default profile;
