@@ -1,43 +1,44 @@
 "use client"
 import { useState, useEffect, Suspense } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation"; 
 import Profile from "@components/Profile";
 
-
-const profile = () => {
+const ProfilePage = () => {
   const { data: session } = useSession();
   const [posts, setPosts] = useState([]);
-  const searchParams = useSearchParams();
-  const promptCreatorId = searchParams.get('id');
-  
+  const searchParams = useSearchParams(); 
+  const promptCreatorId = searchParams.get('id'); 
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await fetch(`/api/users/${promptCreatorId}/posts`);
-      const data = await response.json();
-      setPosts(data)
-    }
-
-    if(session?.user.id){
-      fetchPost();
+      try {
+        if (promptCreatorId && session?.user?.id) {
+          const response = await fetch(`/api/users/${promptCreatorId}/posts`);
+          const data = await response.json();
+          setPosts(data);
+        }
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
     };
-  }, [session])
 
+    fetchPost();
+  }, [promptCreatorId, session]);
 
   return (
-     <>
-    <Suspense  fallback={<>Loading...</>} >
-    {posts.length && <Profile
-      name={posts[0].creator.username}
-      desc="Welcome to your personalized profile"
-      data={posts}
-      handleEdit={()=> {}}
-      handleDelete={()=> {}}
-    />}
+    <Suspense fallback={<div>Loading...</div>}>
+      {posts.length > 0 && (
+        <Profile
+          name={posts[0].creator.username}
+          desc="Welcome to your personalized profile"
+          data={posts}
+          handleEdit={() => {}}
+          handleDelete={() => {}}
+        />
+      )}
     </Suspense>
-   </>
-  )
-}
+  );
+};
 
-export default profile;
+export default ProfilePage;
