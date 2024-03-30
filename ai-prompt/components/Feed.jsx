@@ -3,22 +3,22 @@ import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
 
 
-const PromptCardList = ({ data, handleTagClick}) => {
-  return (
-    <div className="mt-16 prompt_layout">
-      {alert(data.length)}
-      {data.map((post) => {
-        return (
-          <PromptCard
-            key={post._id}
-            post={post}
-            handleTagClick={handleTagClick}
-          />
-        )
-      })}
-    </div>
-  )
-}
+// const PromptCardList = ({ data, handleTagClick}) => {
+//   return (
+//     <div className="mt-16 prompt_layout">
+//       {alert(data.length)}
+//       {data.map((post) => {
+//         return (
+//           <PromptCard
+//             key={post._id}
+//             post={post}
+//             handleTagClick={handleTagClick}
+//           />
+//         )
+//       })}
+//     </div>
+//   )
+// }
 
 
 const Feed = () => {
@@ -70,10 +70,10 @@ const Feed = () => {
         />
       </form>
     
-      <PromptCardList
+      {/* <PromptCardList
         data={post}
         handleTagClick={handleTag}
-      />
+      /> */}
     
     </section>
   )
