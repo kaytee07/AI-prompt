@@ -47,7 +47,9 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch("/api/prompt");
+      const response = await fetch("/api/prompt", {
+        cache: "no-store"
+      });
       const data = await response.json();
       console.log(data)
       setAllPost(data);
