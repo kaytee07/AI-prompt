@@ -1,6 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
+import { data } from "autoprefixer";
 
 
 const PromptCardList = ({ data, handleTagClick}) => {
@@ -51,7 +52,7 @@ const Feed = () => {
         cache: "no-store"
       });
       const data = await response.json();
-      console.log(data)
+
       setAllPost(data);
       setPost(data);
     }
@@ -72,10 +73,14 @@ const Feed = () => {
         />
       </form>
     
-      <PromptCardList
-        data={post}
-        handleTagClick={handleTag}
-      />
+      {
+        data[0] && (
+          <PromptCardList
+            data={post}
+            handleTagClick={handleTag}
+          />
+        )
+      }    
     
     </section>
   )
