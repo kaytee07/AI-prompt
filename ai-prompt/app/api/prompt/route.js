@@ -7,6 +7,6 @@ export const GET =  async (req, res) => {
         const getPrompt = await Prompt.find({}).populate('creator');
         return new Response(JSON.stringify(getPrompt), {status: 200});
     } catch (error) {
-        return new Response(JSON.stringify("can get any prompt", {status: 500}))
+        return new Response(JSON.stringify(`cant get any prompt, ${error}`, {status: 500}))
     }
 }
