@@ -1,13 +1,12 @@
 "use client"
 import { useEffect, useState } from "react";
 import PromptCard from "./PromptCard";
-import { data } from "autoprefixer";
 
 
 const PromptCardList = ({ data, handleTagClick}) => {
   return (
     <div className="mt-16 prompt_layout">
-      {data.length && data.map((post) => {
+      {data.map((post) => {
         return (
           <PromptCard
             key={post._id}
