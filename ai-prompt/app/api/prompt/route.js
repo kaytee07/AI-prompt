@@ -1,6 +1,7 @@
 import { connectToDB } from "@utils/database";
 import Prompt from "@models/prompt";
 import User from "@models/user";
+export const revalidate = 0;
 
 export const GET =  async (req, res) => {
     try {
