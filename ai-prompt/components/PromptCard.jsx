@@ -29,7 +29,7 @@ const PromptCard = ({ post, handleTagClick,
             className="flex-1 flex justify-start items-center
            gap-3">
             <Image
-              src={post?.creator.image}
+              src={post.creator?.image}
               alt="user_image"
               width={40}
               height={40}
@@ -37,9 +37,9 @@ const PromptCard = ({ post, handleTagClick,
             />
 
             <div className="flex flex-col">
-              <h3 className="font-satoshi font-semibold text-gray-900">{post.creator.username}</h3>
+              <h3 className="font-satoshi font-semibold text-gray-900">{post.creator?.username}</h3>
               <p className="font-inter text-sm text-gray-500
-              ">{post.creator.email}</p>
+              ">{post.creator?.email}</p>
             </div>
           </div>
 
@@ -63,7 +63,7 @@ const PromptCard = ({ post, handleTagClick,
         {post.tag}
       </p>
 
-      {session?.user.id === post.creator._id && 
+      {session?.user.id === post.creator?._id && 
       pathName === '/myprofile' && (
         <div className="mt-5 flex-end gap-4 border-t border-gray-100 pt-3">
           <p
