@@ -29,7 +29,7 @@ const PromptCard = ({ post, handleTagClick,
             className="flex-1 flex justify-start items-center
            gap-3">
             <Image
-              src={post.creator.image}
+              src={post?.creator.image}
               alt="user_image"
               width={40}
               height={40}
