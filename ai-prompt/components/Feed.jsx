@@ -72,15 +72,10 @@ const Feed = () => {
           required
         />
       </form>
-    
-      {
-        data[0] && (
-          <PromptCardList
-            data={post}
-            handleTagClick={handleTag}
-          />
-        )
-      }    
+      <PromptCardList
+        data={post}
+        handleTagClick={handleTag}
+      />
     
     </section>
   )
