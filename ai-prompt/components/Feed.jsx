@@ -35,7 +35,7 @@ const Feed = () => {
     let regex = new RegExp(searchText, "i");
 
     return allPost.filter((prompt) => {
-      return regex.test(prompt.creator.username) || 
+      return regex.test(prompt.creator?.username) || 
       regex.test(prompt.tag) || regex.test(prompt.prompt)
     })
   }
@@ -51,8 +51,8 @@ const Feed = () => {
         cache: "no-store"
       });
       const data = await response.json();
-      console.log(data)
       setPost(data);
+      setAllPost(data);
     }
 
     fetchPosts();
